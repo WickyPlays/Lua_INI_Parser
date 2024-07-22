@@ -7,9 +7,6 @@ local ini_parser = {}
 --- Reads an INI file and parses its content into a table.
 -- @param filePath string: The path to the INI file to be read.
 -- @return table: A table containing the parsed INI data. The table includes an `__order` field that maintains the order of sections, keys, and comments.
--- @usage
--- local ini_parser = require('ini_parser')
--- local data = ini_parser.read('config.ini')
 function ini_parser.read(filePath)
     --Params assertions
     assert(type(filePath) == 'string', 'Parameter "filePath" must be a string.')
@@ -65,21 +62,6 @@ end
 --- Writes a table to an INI file.
 -- @param filePath string: The path to the INI file to be written.
 -- @param data table: A table containing the data to be written to the INI file.
--- @usage
--- local ini_parser = require('ini_parser')
--- local data = {
---     __order = {
---         { type = "section", section = "Settings" },
---         { type = "pair", section = "Settings", key = "resolution", value = "1920x1080" },
---         { type = "pair", section = "Settings", key = "fullscreen", value = true }
---     },
---     Settings = {
---         __order = { "resolution", "fullscreen" },
---         resolution = "1920x1080",
---         fullscreen = true
---     }
--- }
--- ini_parser.write('config.ini', data)
 function ini_parser.write(filePath, data)
     --Params assertions
     assert(type(filePath) == 'string', 'Parameter "filePath" must be a string.')
